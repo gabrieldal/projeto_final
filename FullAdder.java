@@ -1,23 +1,37 @@
 import java.util.Scanner;
 
 public class FullAdder {
-    private char A, B, Cin;
-    private HalfAdder halfAdder2;
+    private char A, B, Cin, Cout, Sout;
+    private HalfAdder2 halfAdder, halfAdder2;
+    private PortaOr portaOr;
+    
 
 
-    public FullAdder(char A, char B, HalfAdder halfAdder2, char Cin) {
+    public FullAdder(char A, char B, char Cin) {
         this.A = A;
         this.B = B;
-        this.halfAdder2 = halfAdder2;
-        this.Cin = Cin; 
+        this.Cin = Cin;
+        processamento();
+
+
     }
 
-    public int SumOUT(char A, char B, char Cin) {
-        return halfAdder2.SumOUT(A, B);
+    private void processamento(){
+        halfAdder = new HalfAdder2(A, B);
+        halfAdder2 = new HalfAdder2(halfAdder.SumOUT2(), Cin);
+        portaOr = new PortaOr(halfAdder.CarryOUT2(), halfAdder2.CarryOUT2());
+        Cout = portaOr.GetSaida();
+        Sout = halfAdder2.SumOUT2();
+
+
+    }
+    
+    public char SumOUT() {
+        return Sout;
     }
 
-    public int CarryOUT(char A, char B, char Cin) {
-        return halfAdder2.CarryOUT(A, B);
+    public char CarryOUT() {
+        return Cout;
     }
 
     public static void main(String[] args) {
@@ -28,12 +42,9 @@ public class FullAdder {
         char B = ler.next().charAt(0);
         System.out.print("Digite o valor de Cin: ");
         char Cin = ler.next().charAt(0);
-        PortaAnd portaAnd = new PortaAnd(A, B);
-        PortaXor portaXor = new PortaXor(A, B);
-        HalfAdder halfAdder = new HalfAdder(A, B, portaAnd, portaXor);
-        FullAdder fullAdder = new FullAdder(A, B, halfAdder, Cin);
-        System.out.println("Soma: " + fullAdder.SumOUT(A, B, Cin));
-        System.out.println("Carry: " + fullAdder.CarryOUT(A, B, Cin));
+        FullAdder fullAdder = new FullAdder(A, B, Cin);
+        System.out.println("Soma: " + fullAdder.SumOUT());
+        System.out.println("Carry: " + fullAdder.CarryOUT());
         
 
     }

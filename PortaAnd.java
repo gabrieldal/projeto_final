@@ -9,16 +9,16 @@ public class PortaAnd {
         Entrada2 = entrada2;
     }
 
-    public int GetSaida() //metodo que retorna o valor da saida
+    public char GetSaida() //metodo que retorna o valor da saida
     {
         if (Entrada1 == '0' && Entrada2 == '0') {
-            return 0;
+            return '0';
         } else if (Entrada1 == '1' && Entrada2 == '0'){
-            return 0;
+            return '0';
         } else if (Entrada1 == '0' && Entrada2 == '1'){
-            return 0;
+            return '0';
         } else {
-            return 1;
+            return '1';
         }
     }
 

@@ -10,12 +10,12 @@ public class PortaOr {
         Entrada2 = entrada2;
     }
 
-    public int GetSaida() //metodo que retorna o valor da saida
+    public char GetSaida() //metodo que retorna o valor da saida
    {
         if (Entrada1 == '1' || Entrada2 == '1') {
-            return 1;
+            return '1';
         } else {
-            return 0;
+            return '0';
         }
     }
    
