@@ -4,7 +4,6 @@ public class Somador8bit {
     private Registrador registrador;
     private FullAdder fullAdder, fullAdder2, fullAdder3, fullAdder4, fullAdder5, fullAdder6, fullAdder7, fullAdder8;
 
-
     public Somador8bit(char[] operando1, char[] operando2) {
         Operando1 = operando1;
         Operando2 = operando2;
@@ -28,6 +27,7 @@ public class Somador8bit {
         Resultado[6] = fullAdder7.SumOUT();
         fullAdder8 = new FullAdder(operando1[7], operando2[7], fullAdder7.CarryOUT());
         Resultado[7] = fullAdder8.SumOUT();
+
     }
 
     public char[] GetResultado() {
@@ -46,6 +46,7 @@ public class Somador8bit {
         registrador.setReg(somador8bit.GetResultado());
         System.out.println(registrador.getReg()); //printa o resultado do somador usando o regitrador
     }
+
 
 
 }

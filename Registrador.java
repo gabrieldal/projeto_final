@@ -16,5 +16,13 @@ public class Registrador {
         return reg;
     }
 
+    public void setValor(char valor) {
+        reg[0] = valor;
+    }
+
+    public char getValor() {
+        return reg[0];
+    }
+
     
 }
