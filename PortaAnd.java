@@ -1,3 +1,4 @@
+package portas;
 import java.util.Scanner;
 
 public class PortaAnd {

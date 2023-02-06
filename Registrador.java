@@ -1,11 +1,12 @@
-
 public class Registrador {
     //implementar regitador usando vetor 
     private char[] reg;
-    
 
     public Registrador() {
         reg = new char[8];
+        for (int i = 0; i < reg.length; i++) {
+            reg[i] = '0';
+        }
     }
 
     public void setReg(char[] reg) {
@@ -16,12 +17,12 @@ public class Registrador {
         return reg;
     }
 
-    public void setValor(char valor) {
-        reg[0] = valor;
+    public void setValor(char valor, int index) {
+        reg[index] = valor;
     }
 
-    public char getValor() {
-        return reg[0];
+    public char getValor(int index) {
+        return reg[index];
     }
 
     

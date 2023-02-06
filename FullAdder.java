@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import portas.PortaOr;
+
 public class FullAdder {
     private char A, B, Cin, Cout, Sout;
     private HalfAdder2 halfAdder, halfAdder2;

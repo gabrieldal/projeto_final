@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import portas.PortaAnd;
+import portas.PortaXor;
+
 public class HalfAdder2 {
     private char A, B;
     private PortaAnd portaAnd;

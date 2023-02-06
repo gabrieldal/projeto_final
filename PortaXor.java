@@ -1,3 +1,4 @@
+package portas;
 public class PortaXor {
     private char Entrada1;
     private char Entrada2;

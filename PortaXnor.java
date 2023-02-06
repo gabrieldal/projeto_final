@@ -1,3 +1,4 @@
+package portas;
 public class PortaXnor {
     private char Entrada1;
     private char Entrada2;
@@ -7,16 +8,16 @@ public class PortaXnor {
         Entrada2 = entrada2;
     }
 
-    public int GetSaida()
+    public char GetSaida()
     {
         if (Entrada1 == '0' && Entrada2 == '0') {
-            return 1;
+            return '1';
         } else if (Entrada1 == '1' && Entrada2 == '0'){
-            return 0;
+            return '0';
         } else if (Entrada1 == '0' && Entrada2 == '1'){
-            return 0;
+            return '0';
         } else {
-            return 1;
+            return '1';
         }
     }
     
