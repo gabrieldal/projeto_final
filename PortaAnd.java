@@ -33,5 +33,6 @@ public class PortaAnd {
         Entrada2 = ler.next().charAt(0);
         PortaAnd porta = new PortaAnd(Entrada1, Entrada2);
         System.out.println("Saida: " + porta.GetSaida());
+        ler.close();
     }
 }

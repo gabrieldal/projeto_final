@@ -1,8 +1,7 @@
 public class pc {
     private char[] contador = new char[8];
     private char[] contador2 = new char[8];
-    private char[] umBinario = {'0', '0', '0', '0', '0', '0', '0', '1'};
-    private Somador8bit somador8bit = new Somador8bit(contador, umBinario);
+    private Somador8bit somador8bit = new Somador8bit();
 
     public pc() {
         for (int i = 0; i < 8; i++) {
@@ -16,7 +15,8 @@ public class pc {
             contador2 = contador;
         } else if (incrementaPC == '1') {
            contador2 = contador;
-           contador = somador8bit.processamento(contador, contador2);
+           somador8bit.processamento(contador, contador2);
+           contador = somador8bit.getResultado();
         }
         return contador;
     }

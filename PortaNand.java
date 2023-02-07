@@ -1,5 +1,5 @@
 package portas;
-public class PortaNand  {
+public class PortaNand {
     private char Entrada1;
     private char Entrada2;
 
@@ -8,16 +8,15 @@ public class PortaNand  {
         Entrada2 = entrada2;
     }
 
-    public char GetSaida()
-        {
-            if(Entrada1 == '0' && Entrada2 == '0') {
-                return '1';
-            } else if(Entrada1 == '1' && Entrada2 == '0') {
-                return '1';
-            } else if(Entrada1 == '0' && Entrada2 == '1') {
-                return '1';
-            } else {
-                return '0';
-            }
-            }
+    public char GetSaida() {
+        if(Entrada1 == '0' && Entrada2 == '0') {
+            return '1';
+        } else if(Entrada1 == '1' && Entrada2 == '0') {
+            return '1';
+        } else if(Entrada1 == '0' && Entrada2 == '1') {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
 }

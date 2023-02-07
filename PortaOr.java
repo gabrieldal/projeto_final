@@ -12,7 +12,7 @@ public class PortaOr {
     }
 
     public char GetSaida() //metodo que retorna o valor da saida
-   {
+    {
         if (Entrada1 == '1' || Entrada2 == '1') {
             return '1';
         } else {
@@ -22,13 +22,14 @@ public class PortaOr {
    
 
    public static void main(String[] args) {
-   Scanner ler = new Scanner(System.in);
-    char Entrada1, Entrada2;
-    System.out.print("Digite o valor da Entrada 1: ");
-    Entrada1 = ler.next().charAt(0);
-    System.out.print("Digite o valor da Entrada 2: ");
-    Entrada2 = ler.next().charAt(0);
-    PortaOr porta = new PortaOr(Entrada1, Entrada2);
-    System.out.println("Saida: " + porta.GetSaida());
+        Scanner ler = new Scanner(System.in);
+        char Entrada1, Entrada2;
+        System.out.print("Digite o valor da Entrada 1: ");
+        Entrada1 = ler.next().charAt(0);
+        System.out.print("Digite o valor da Entrada 2: ");
+        Entrada2 = ler.next().charAt(0);
+        PortaOr porta = new PortaOr(Entrada1, Entrada2);
+        System.out.println("Saida: " + porta.GetSaida());
+        ler.close();
     }
 }

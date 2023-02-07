@@ -1,6 +1,6 @@
 public class Registrador {
-    //implementar regitador usando vetor 
     private char[] reg;
+    private Conversor conversor = new Conversor();
 
     public Registrador() {
         reg = new char[8];
@@ -25,5 +25,13 @@ public class Registrador {
         return reg[index];
     }
 
-    
+    public String toString() {
+        return "" + conversor.binarioParaDecimal(reg);
+    }
+
+    public static void main(String args[]){
+        Registrador reg = new Registrador();
+        System.out.println(reg.toString());
+    }
+
 }
