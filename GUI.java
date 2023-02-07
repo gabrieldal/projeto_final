@@ -22,13 +22,13 @@ public class GUI extends JFrame {
     private int PC = 0;
     private Registrador AC = new Registrador(); 
     private Conversor conversor = new Conversor();
-    private Somador8bit ULA = new Somador8bit();
     private Memoria memoria = new Memoria();
+    private ULA ula = new ULA();
     
-    public GUI(){ //aq comeca
+    public GUI(){ 
         Container janela = getContentPane();
         setTitle("Simulador de Processador Neander");
-        setSize(600, 600);
+        setSize(600, 650);
         setLayout(gridLayout);
 
         //Painel de memoria de instruções
@@ -117,16 +117,18 @@ public class GUI extends JFrame {
             "Mnemonicos\n\n"+
             "NOP  0\n"+
             "STA  16 end\n"+
-            "LDA  32 end"
+            "LDA  32 end\n"+
+            "ADD  48 end"
         );
         mnemonicos1.setEditable(false);
         panel.add(mnemonicos1);
 
         mnemonicos2 = new JTextArea(
             "----------\n\n"+
-            "ADD  48 end\n"+
-            "HLT  80\n"+
-            ""
+            "NOT  96\n"+
+            "JMP  128 end\n"+
+            "JN    144 end\n"+
+            "HLT  240"
         );
         mnemonicos2.setEditable(false);
         panel.add(mnemonicos2);
@@ -182,28 +184,36 @@ public class GUI extends JFrame {
                 int endI = listaInstr.getAnchorSelectionIndex()+1;
                 int end = (conversor.binarioParaDecimal(memoria.getInstrucao(endI)))%16;
                 switch (opcode) { 
-                    case 0:
+                    case 0: //NOP
                         PC++;
                         break;
-                    case 1:
+                    case 1: //STA
                         memoria.setDado(end, AC.getReg());
                         PC+=2;
                         break;
-                    case 2:
+                    case 2: //LDA
                         AC.setReg(memoria.getDado(end));
                         PC+=2;
                         break;
-                    case 3:
-                        ULA.processamento(AC.getReg(), memoria.getDado(end));
-                        AC.setReg(ULA.getResultado());
+                    case 3: //ADD
+                        AC.setReg(ula.soma(AC.getReg(), memoria.getDado(end)));
                         PC+=2;
                         break;
-                    case 8: 
+                    case 6: //NOT
+                        AC.setReg(ula.not(AC.getReg()));
+                        PC++;
+                        break;
+                    case 8: //JMP
                         PC=end;
                         break;
-                    case 15: 
-                        //PC.setReg(conversor.decimalParaBinario(end));
-                        PC=0; 
+                    case 9: //JN
+                        if (ula.compNegativo(AC.getReg())) {
+                            PC=end;
+                        } else {
+                            PC+=2;
+                        }
+                        break;
+                    case 15:  //HLT
                         break;
                     default:
                         break;
@@ -241,8 +251,7 @@ public class GUI extends JFrame {
                             PC+=2;
                             break;
                         case 3:
-                            ULA.processamento(AC.getReg(), memoria.getDado(end));
-                            AC.setReg(ULA.getResultado());
+                            AC.setReg(ula.soma(AC.getReg(), memoria.getDado(end)));
                             PC+=2;
                             break;
                         case 5:
@@ -266,18 +275,6 @@ public class GUI extends JFrame {
         panel.add(Executar);
         janela.add(panel);
         ////////////////////////// 
-        /*
-            seguinte, agr papo serio
-            eu tava pensando o seguitne
-            sobre oq da pra fazer "a mais" "de verdade", alem de botar esse outras instrucoes do jeito simplao
-
-            - implementar o PC (classe) nesse codigo
-            - implementar a classe Registrador com FlipFlop (ahco dificil) mas sla, que nem a do mano
-            - implementar comparador pra fazer um classe ula
-            - humm, acho que isso dai, sepa vou tentar fazer 
-            //sim, em byte positivo vai ate o ultimo bit fica 1, vai de 0 a 127 positvo ai comeca os negativos
-        
-        */
 
         //Painel de memoria de dados
         listaDados = new JList<>(memoria.getMemDados());

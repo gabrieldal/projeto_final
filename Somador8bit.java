@@ -1,3 +1,5 @@
+import Basicos.FullAdder;
+
 public class Somador8bit {
     private char Resultado[];
     private FullAdder fullAdder, fullAdder2, fullAdder3, fullAdder4, fullAdder5, fullAdder6, fullAdder7, fullAdder8;

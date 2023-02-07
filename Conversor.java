@@ -33,7 +33,7 @@ public class Conversor {
 
     public static void main(String[] args) {
         Conversor conversor = new Conversor();
-        char[] binario = {'0', '1', '1', '0', '0', '1', '1', '0'};
+        char[] binario = {'1', '1', '1', '0', '1', '0', '1', '1'}; 
         System.out.println(conversor.binarioParaDecimal(binario));
     }
 
